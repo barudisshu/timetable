@@ -1,3 +1,26 @@
-<p>
-  chromosome-asso works!
-</p>
+<div class="ui raised segment">
+  <h2 class="ui header">种群初始化数据</h2>
+  <form [formGroup]="chromoForm"
+        (ngSubmit)="onSubmit(chromoForm.value)"
+        class="ui form"
+        [class.error]="!chromoForm.valid && chromoForm.touched">
+
+    <div class="field"
+         [class.error]="!chromo.valid && chromo.touched">
+      <label for="chromosomeSize">基因长度</label>
+      <input type="text"
+             id="chromosomeSize"
+             placeholder="chromo"
+             [formControl]="chromo">
+      <!--<div *ngIf="!chromo.valid" class="ui error message">SKU is invalid</div>-->
+      <div *ngIf="chromo.hasError('required')"
+           class="ui error message">必填</div>
+      <div *ngIf="chromo.hasError('invalidChromo')"
+           class="ui error message">必须为数字</div>
+    </div>
+
+    <div *ngIf="!chromoForm.valid"
+         class="ui error message">表单格式不正确</div>
+    <button type="submit" class="ui button">提交</button>
+  </form>
+</div>

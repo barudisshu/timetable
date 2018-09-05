@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {
   RouterModule,
   Routes,
   Router
 } from '@angular/router';
+
 import {
   APP_BASE_HREF,
   LocationStrategy,
@@ -17,9 +18,9 @@ import { AppComponent } from './app.component';
 import { IntroComponent } from './intro/intro.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarItemComponent } from './sidebar/sidebar-item.component';
+import { ChromosomeAssoComponent } from './chromosome-asso/chromosome-asso.component';
 
 import { ExampleDef } from './example.model';
-import { ChromosomeAssoComponent } from './chromosome-asso/chromosome-asso.component';
 
 /*
  * Here's the master list of our examples for this chapter.
@@ -45,6 +46,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
 
