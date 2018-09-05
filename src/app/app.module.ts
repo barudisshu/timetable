@@ -19,16 +19,19 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarItemComponent } from './sidebar/sidebar-item.component';
 
 import { ExampleDef } from './example.model';
+import { ChromosomeAssoComponent } from './chromosome-asso/chromosome-asso.component';
 
 /*
  * Here's the master list of our examples for this chapter.
  */
 export const examples: ExampleDef[] = [
    {label: '介绍', name: 'Root', path: '', component: IntroComponent},
+   {label: '种群基础', name: 'Chromosome', path: 'chromosome', component: ChromosomeAssoComponent},
 ];
 
 const routes: Routes = [
   { path: '', component: IntroComponent, pathMatch: 'full' },
+  { path: 'chromosome', component: ChromosomeAssoComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
@@ -37,6 +40,7 @@ const routes: Routes = [
     IntroComponent,
     SidebarComponent,
     SidebarItemComponent,
+    ChromosomeAssoComponent,
   ],
   imports: [
     BrowserModule,
