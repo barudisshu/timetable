@@ -7,8 +7,8 @@ import {
   FormControl
 } from '@angular/forms';
 
-function skuValidator(control: FormControl): { [s: string]: boolean } {
-  if (!control.value.match(/^123/)) {
+function chromosomeValidator(control: FormControl): { [s: string]: boolean } {
+  if (!control.value.match(/^(\d+)$/)) {
     return {invalidChromo: true};
   }
 }
@@ -21,15 +21,17 @@ function skuValidator(control: FormControl): { [s: string]: boolean } {
 })
 export class ChromosomeAssoComponent implements OnInit {
   chromoForm: FormGroup;
-  chromo: AbstractControl;
+  chromoSize: AbstractControl;
+  populationSize: AbstractControl;
 
   constructor(fb: FormBuilder) {
     this.chromoForm = fb.group({
-      'chromo':  ['', Validators.compose([
-        Validators.required, skuValidator])]
+      'chromoSize':  ['', Validators.compose([Validators.required, chromosomeValidator])],
+      'populationSize': ['', Validators.compose([Validators.required, chromosomeValidator])]
     });
 
-    this.chromo = this.chromoForm.controls['chromo'];
+    this.chromoSize = this.chromoForm.controls['chromoSize'];
+    this.populationSize = this.chromoForm.controls['populationSize'];
   }
 
   onSubmit(value: string): void {

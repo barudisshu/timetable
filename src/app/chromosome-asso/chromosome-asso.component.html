@@ -6,21 +6,35 @@
         [class.error]="!chromoForm.valid && chromoForm.touched">
 
     <div class="field"
-         [class.error]="!chromo.valid && chromo.touched">
+         [class.error]="!chromoSize.valid && chromoSize.touched">
       <label for="chromosomeSize">基因长度</label>
       <input type="text"
              id="chromosomeSize"
-             placeholder="chromo"
-             [formControl]="chromo">
-      <!--<div *ngIf="!chromo.valid" class="ui error message">SKU is invalid</div>-->
-      <div *ngIf="chromo.hasError('required')"
+             placeholder="8"
+             [formControl]="chromoSize"
+             class="required">
+      <div *ngIf="chromoSize.hasError('required')"
            class="ui error message">必填</div>
-      <div *ngIf="chromo.hasError('invalidChromo')"
+      <div *ngIf="chromoSize.hasError('invalidChromo')"
            class="ui error message">必须为数字</div>
     </div>
 
-    <div *ngIf="!chromoForm.valid"
-         class="ui error message">表单格式不正确</div>
+    <div class="field"
+         [class.error]="!populationSize.valid && populationSize.touched">
+      <label for="populationSize">种群大小</label>
+      <input type="text"
+             id="populationSize"
+             placeholder="1000"
+             [formControl]="populationSize"
+             class="required">
+      <div *ngIf="populationSize.hasError('required')"
+           class="ui error message">必填</div>
+      <div *ngIf="populationSize.hasError('invalidChromo')"
+           class="ui error message">必须为数字</div>
+    </div>
+
+
+    <div *ngIf="!chromoForm.valid" class="ui error message">表单格式不正确</div>
     <button type="submit" class="ui button">提交</button>
   </form>
 </div>
