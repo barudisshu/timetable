@@ -5,36 +5,74 @@
         class="ui form"
         [class.error]="!chromoForm.valid && chromoForm.touched">
 
-    <div class="field"
+    <div class="two fields">
+    <div class="field required"
          [class.error]="!chromoSize.valid && chromoSize.touched">
       <label for="chromosomeSize">基因长度</label>
       <input type="text"
              id="chromosomeSize"
              placeholder="8"
              [formControl]="chromoSize"
+             name="chromosomeSize"
              class="required">
-      <div *ngIf="chromoSize.hasError('required')"
-           class="ui error message">必填</div>
-      <div *ngIf="chromoSize.hasError('invalidChromo')"
-           class="ui error message">必须为数字</div>
+      <div *ngIf="chromoSize.hasError('required') && chromoSize.touched"
+           class="ui basic red pointing prompt label transition">必填</div>
+      <div *ngIf="chromoSize.hasError('invalidChromo') && chromoSize.touched"
+           class="ui basic red pointing prompt label transition">必须为数字</div>
     </div>
 
-    <div class="field"
+    <div class="field required"
          [class.error]="!populationSize.valid && populationSize.touched">
-      <label for="populationSize">种群大小</label>
+      <label for="populationSize">种群个体数</label>
       <input type="text"
              id="populationSize"
-             placeholder="1000"
+             placeholder="32"
              [formControl]="populationSize"
+             name="populationSize"
              class="required">
-      <div *ngIf="populationSize.hasError('required')"
-           class="ui error message">必填</div>
-      <div *ngIf="populationSize.hasError('invalidChromo')"
-           class="ui error message">必须为数字</div>
+      <div *ngIf="populationSize.hasError('required') && populationSize.touched"
+           class="ui basic red pointing prompt label transition">必填</div>
+      <div *ngIf="populationSize.hasError('invalidChromo') && populationSize.touched"
+           class="ui basic red pointing prompt label transition">必须为数字</div>
+    </div>
+    </div>
+
+    <div class="two fields">
+    <div class="field required"
+         [class.error]="!maxEvolution.valid && maxEvolution.touched">
+      <label for="maxEvolution">最大进化次数</label>
+      <input type="text"
+             id="maxEvolution"
+             placeholder="1000"
+             [formControl]="maxEvolution"
+             name="maxEvolution"
+             class="required">
+      <div *ngIf="maxEvolution.hasError('required') && maxEvolution.touched"
+           class="ui basic red pointing prompt label transition">必填</div>
+    </div>
+
+    <div class="field required"
+         [class.error]="!threshold.valid && threshold.touched">
+      <label for="threshold">阈值</label>
+      <select id="threshold"
+              [formControl]="threshold"
+              name="threshold"
+              class="ui required">
+        <option value="">--</option>
+        <option value="1">1</option>
+        <option value="0.8">0.8</option>
+        <option value="0.7">0.7</option>
+        <option value="0.5">0.5</option>
+        <option value="0">0</option>
+      </select>
+      <div *ngIf="threshold.hasError('required') && threshold.touched"
+           class="ui basic red pointing prompt label transition">必填</div>
+    </div>
     </div>
 
 
     <div *ngIf="!chromoForm.valid" class="ui error message">表单格式不正确</div>
-    <button type="submit" class="ui button">提交</button>
+    <button type="submit" class="ui button primary">提交</button>
+
   </form>
 </div>

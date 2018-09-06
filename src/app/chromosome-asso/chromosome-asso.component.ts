@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -17,21 +17,27 @@ function chromosomeValidator(control: FormControl): { [s: string]: boolean } {
 @Component({
   selector: 'app-chromosome-asso',
   templateUrl: './chromosome-asso.component.html',
-  styles: []
+  styleUrls: ['./chromosome-asso.component.css'],
 })
 export class ChromosomeAssoComponent implements OnInit {
   chromoForm: FormGroup;
   chromoSize: AbstractControl;
   populationSize: AbstractControl;
+  maxEvolution: AbstractControl;
+  threshold: AbstractControl;
 
   constructor(fb: FormBuilder) {
     this.chromoForm = fb.group({
       'chromoSize':  ['', Validators.compose([Validators.required, chromosomeValidator])],
-      'populationSize': ['', Validators.compose([Validators.required, chromosomeValidator])]
+      'populationSize': ['', Validators.compose([Validators.required, chromosomeValidator])],
+      'maxEvolution': ['', Validators.compose([Validators.required])],
+      'threshold': ['', Validators.compose([Validators.required])]
     });
 
     this.chromoSize = this.chromoForm.controls['chromoSize'];
     this.populationSize = this.chromoForm.controls['populationSize'];
+    this.maxEvolution = this.chromoForm.controls['maxEvolution'];
+    this.threshold = this.chromoForm.controls['threshold'];
   }
 
   onSubmit(value: string): void {

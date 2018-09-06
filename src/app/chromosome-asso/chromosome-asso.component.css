@@ -1,0 +1,12 @@
+.ui.form.error.error.blocking:not(:empty) {
+  display: none;
+}
+.ui.form.error.blocking, .ui.form.success.blocking, .ui.form.warning.blocking {
+  display: block;
+}
+.blocking:last-child {
+  margin-bottom: 0;
+}
+.ui.blocking {
+
+}
