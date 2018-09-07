@@ -1,0 +1,46 @@
+<div class="ui raised segment">
+  <h2 class="ui header">教室信息录入</h2>
+  <form [formGroup]="classForm"
+        (ngSubmit)="onSubmit(classForm.value)"
+        class="ui form"
+        [class.error]="!classForm.valid && classForm.touched">
+
+    <div class="two fields">
+      <div class="field required"
+           [class.error]="!classId.valid && classId.touched">
+        <label for="classId">教室ID</label>
+        <input type="text"
+               id="classId"
+               placeholder="101"
+               [formControl]="classId"
+               name="classId"
+               class="required">
+        <div *ngIf="classId.hasError('required') && classId.touched"
+             class="ui basic red pointing prompt label transition">必填
+        </div>
+        <div *ngIf="classId.hasError('invalidChromo') && classId.touched"
+             class="ui basic red pointing prompt label transition">必须为数字
+        </div>
+      </div>
+    </div>
+    <div class="two fields">
+      <div class="field required"
+           [class.error]="!classSize.valid && classSize.touched">
+        <label for="classSize">教室座位数</label>
+        <input type="text"
+               id="classSize"
+               placeholder="32"
+               [formControl]="classSize"
+               name="classSize"
+               class="required">
+        <div *ngIf="classSize.hasError('required') && classSize.touched"
+             class="ui basic red pointing prompt label transition">必填
+        </div>
+        <div *ngIf="classSize.hasError('invalidChromo') && classSize.touched"
+             class="ui basic red pointing prompt label transition">必须为数字
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>
