@@ -8,12 +8,12 @@
     <div class="two fields">
     <div class="field required"
          [class.error]="!chromoSize.valid && chromoSize.touched">
-      <label for="chromosomeSize">基因长度</label>
+      <label for="chromoSize">基因长度</label>
       <input type="text"
-             id="chromosomeSize"
+             id="chromoSize"
              placeholder="8"
              [formControl]="chromoSize"
-             name="chromosomeSize"
+             name="chromoSize"
              class="required">
       <div *ngIf="chromoSize.hasError('required') && chromoSize.touched"
            class="ui basic red pointing prompt label transition">必填</div>

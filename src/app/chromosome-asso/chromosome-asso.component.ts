@@ -34,8 +34,8 @@ export class ChromosomeAssoComponent implements OnInit {
       'threshold': ['', Validators.compose([Validators.required])]
     });
 
-    this.chromoSize = this.chromoForm.controls['classId'];
-    this.populationSize = this.chromoForm.controls['classSize'];
+    this.chromoSize = this.chromoForm.controls['chromoSize'];
+    this.populationSize = this.chromoForm.controls['populationSize'];
     this.maxEvolution = this.chromoForm.controls['maxEvolution'];
     this.threshold = this.chromoForm.controls['threshold'];
   }
